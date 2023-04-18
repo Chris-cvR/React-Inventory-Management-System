@@ -1,39 +1,43 @@
 import './App.css';
-import {PropTypes} from "prop-types";
 import Info from "./info.js";
+import { useState } from 'react';
 
 function App() { //Main component for our application
   return (
     <div className="App">
       <Info />
-      <AddItem text="Chris" />
-      <AddItem text="Josh" />
-      <AddItem />
+      <ButtonState />
     </div>
   ); 
 }
 
-function AddItem(props) { //Props are constructed like JS objects
+function ButtonState() {
+  const [title, setTitle] = useState("");
+  const [count, setCount] = useState(0);
+
+  const updateTitleClicked = () => {
+    setTitle("We now have a title!");
+  }
+
+  const updateCounterClicked = () => {
+    setCount(count + 1);
+  }
+
   return (
-    <form>
-      <label for="text-form">Type Somthing: </label>
-      <input type="text" value={props.text} id="text-form" />
-      <p>{props.number}</p>
-    </form>
-  )
+    <div>
+    <Data title={title} count={count}></Data>
+    <button onClick={updateTitleClicked}>Update Title</button>
+    <button onClick={updateCounterClicked}>Update Counter</button>
+    </div>
+  );
 }
 
-AddItem.defaultProps = {
-  number:33,
-  text: "Default"
+function Data(props){
+  return (<div>
+    <p>Title: {props.title}</p>
+    <p>Count: {props.count}</p>
+  </div>)
 }
-
-AddItem.propTypes = {
-  number: PropTypes.number,
-  text: PropTypes.string,
-} 
-//This is not enforcing that it is supposed to be this way
-//However it provides a warning in the console that its the wrong props
 
 
 export default App;
