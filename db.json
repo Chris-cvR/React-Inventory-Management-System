@@ -8,11 +8,18 @@
       "id": 1
     },
     {
-      "name": "Chris",
-      "price": "60",
+      "name": "Peter",
+      "price": "80",
       "type": "Test",
-      "brand": "Awesome",
+      "brand": "Incredible",
       "id": 2
+    },
+    {
+      "name": "Peter",
+      "price": "80",
+      "type": "Person",
+      "brand": "Incredible",
+      "id": 3
     }
   ]
 }
